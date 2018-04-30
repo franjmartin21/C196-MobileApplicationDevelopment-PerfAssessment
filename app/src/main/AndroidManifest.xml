@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.exercise.fmart43.degreetracker">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/terms_label"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.AddTermActivity"
+            android:label="@string/title_activity_add_term"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".activities.DetailTermActivity"
+            android:label="@string/title_activity_detail_term"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".activities.ListCourseActivity"
+            android:label="@string/title_activity_list_course"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AddCourseActivity"
+            android:label="@string/title_activity_add_course" />
+        <activity
+            android:name=".activities.DetailCourseActivity"
+            android:label="@string/title_activity_detail_course">
+        </activity>
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity   android:name=".activities.DetailAssessmentActivity"
+                    android:label="@string/title_assessment"
+                    android:parentActivityName=".activities.DetailCourseActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.DetailCourseActivity" />
+        </activity>
+
+        <activity android:name=".activities.DetailNoteActivity"
+            android:label="@string/title_note" />
+    </application>
+
+</manifest>

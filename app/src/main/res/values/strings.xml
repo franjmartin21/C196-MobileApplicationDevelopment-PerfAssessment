@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Degree Tracker</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Bachelor of Science, Software Development</string>
+    <string name="nav_header_subtitle">fmart43@wgu.com</string>
+    <string name="nav_header_desc">Header Nav</string>
+    <string name="action_settings">Settings</string>
+    <string name="terms_label">List Terms</string>
+    <string name="title_activity_add_term">Add Term</string>
+    <string name="title_activity_detail_term">Detail Term</string>
+    <string name="back">Back</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="save">Save</string>
+    <string name="edit">edit</string>
+    <string name="title_activity_list_course">List of Courses</string>
+    <string name="title_activity_add_course">AddCourseActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_detail_course">Detail Course</string>
+
+    <!--Validation Strings -->
+    <string name="addTerm_title_notinformed">The title is not informed</string>
+    <string name="addTerm_startDate_notinformed">The start date is not informed</string>
+    <string name="addTerm_endDate_notinformed">The end date is not informed</string>
+    <string name="addTerm_date_formatnotcorrect">The format of date is not correct. It has to be dd/mm/yyyy</string>
+    <string name="addTerm_date_mintermlenght">End date must be at least 3 months later than start date</string>
+    <string name="addTerm_date_maxtermlenght">End date can just be 9 months long</string>
+    <string name="addTerm_termoverlap">The current term must start after the last term created</string>
+    <string name="assessment">ASSESSMENT</string>
+    <string name="notes">NOTES</string>
+    <string name="assessment_floating_title">Assessment</string>
+    <string name="notes_floating_title">Note</string>
+    <string name="delete_term_message">Delete this Term?</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_assessment">Assessment</string>
+    <string name="title_note">Note</string>
+    <string name="addCourse_title_notinformed">The title is not informed</string>
+
+</resources>
