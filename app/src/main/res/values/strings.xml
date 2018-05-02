@@ -27,7 +27,7 @@
     <string name="addTerm_date_mintermlenght">End date must be at least 3 months later than start date</string>
     <string name="addTerm_date_maxtermlenght">End date can just be 9 months long</string>
     <string name="addTerm_termoverlap">The current term must start after the last term created</string>
-    <string name="assessment">ASSESSMENT</string>
+    <string name="assessment">ASSESSMENTS</string>
     <string name="notes">NOTES</string>
     <string name="assessment_floating_title">Assessment</string>
     <string name="notes_floating_title">Note</string>

@@ -97,7 +97,7 @@ public class DetailCourseActivity extends AppCompatActivity implements Assessmen
             public void onClick(View view) {
             Intent intent = new Intent(DetailCourseActivity.this, DetailAssessmentActivity.class);
             intent.putExtra(DetailAssessmentActivity.IntentExtra.COURSE_ID.name(), courseIdSelected);
-            startActivity(intent);
+            startActivityForResult(intent, RequestCode.ASSESSMENT_ACTIVITY.code);
             floatingActionsMenu.collapse();
             }
         });
@@ -181,7 +181,9 @@ public class DetailCourseActivity extends AppCompatActivity implements Assessmen
     @Override
     public void onListItemClick(int assessmentId) {
         Intent intent = new Intent(this, DetailAssessmentActivity.class);
-        startActivity(intent);
+        intent.putExtra(DetailAssessmentActivity.IntentExtra.COURSE_ID.name(), courseIdSelected);
+        intent.putExtra(DetailAssessmentActivity.IntentExtra.ASSESSMENT_ID.name(), assessmentId);
+        startActivityForResult(intent, RequestCode.ASSESSMENT_ACTIVITY.code);
     }
 
     @Override
@@ -189,7 +191,7 @@ public class DetailCourseActivity extends AppCompatActivity implements Assessmen
         Intent intent = new Intent(this, DetailNoteActivity.class);
         intent.putExtra(DetailNoteActivity.IntentExtra.COURSE_ID.name(), courseIdSelected);
         intent.putExtra(DetailNoteActivity.IntentExtra.NOTE_ID.name(), noteId);
-        startActivityForResult(intent, RequestCode.ASSESSMENT_ACTIVITY.code);
+        startActivityForResult(intent, RequestCode.NOTE_ACTIVITY.code);
     }
 
     @Override

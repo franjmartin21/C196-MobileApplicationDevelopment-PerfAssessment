@@ -1,7 +1,13 @@
 package com.exercise.fmart43.degreetracker.util;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 
+import com.exercise.fmart43.degreetracker.activities.AddTermActivity;
 import com.exercise.fmart43.degreetracker.data.DegreeTrackerContract;
 
 import java.text.DateFormat;
@@ -48,5 +54,16 @@ public class DegreeUtils {
         c.setTime(date);
         c.add(Calendar.MONTH, months);
         return c.getTime();
+    }
+
+    public static void openDateDialog(Context context, final View editText){
+        final EditText editText1 = (EditText)editText;
+        final Calendar calendarToday = Calendar.getInstance();
+        new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                editText1.setText(day + "/" + (month + 1) + "/" + year);
+            }
+        }, calendarToday.get(Calendar.YEAR), calendarToday.get(Calendar.MONTH),calendarToday.get(Calendar.DAY_OF_MONTH)).show();
     }
 }

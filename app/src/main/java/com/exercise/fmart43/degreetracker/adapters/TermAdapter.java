@@ -86,7 +86,6 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermAdapterVie
 
         private ImageView mTermEdit;
 
-
         public TermAdapterViewHolder(View itemView) {
             super(itemView);
 

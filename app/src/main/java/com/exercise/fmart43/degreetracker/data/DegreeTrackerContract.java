@@ -51,6 +51,7 @@ public class DegreeTrackerContract {
             PENDING("PENDING"),
             IN_PROGRESS("IN PROGRESS"),
             COMPLETED("COMPLETED");
+
             String title;
 
             StatusTerm(String title){
@@ -76,6 +77,7 @@ public class DegreeTrackerContract {
 
         public static String getStatusByStartEndDate(Date startDate, Date endDate){
             String status = null;
+
             if(startDate == null || startDate == null) return DegreeTrackerContract.TermEntry.StatusTerm.PENDING.getTitle();
 
             Date today = new Date();
@@ -168,6 +170,15 @@ public class DegreeTrackerContract {
 
             public String getPrefix() {
                 return prefix;
+            }
+
+            static public String[] getStatusArray(){
+                String[] array = new String[AssessmentEntry.TypeAssessment.values().length];
+                int i = 0;
+                for(AssessmentEntry.TypeAssessment typeAssessment: AssessmentEntry.TypeAssessment.values()){
+                    array[i++] = typeAssessment.name();
+                }
+                return array;
             }
         }
     }

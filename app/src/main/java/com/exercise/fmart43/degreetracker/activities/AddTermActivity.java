@@ -80,25 +80,25 @@ public class AddTermActivity extends AppCompatActivity {
         mStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDateDialog(view);
+                DegreeUtils.openDateDialog(AddTermActivity.this, view);
             }
         });
         mStartDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b) openDateDialog(view);
+                if(b) DegreeUtils.openDateDialog(AddTermActivity.this, view);
             }
         });
         mEndDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDateDialog(view);
+                DegreeUtils.openDateDialog(AddTermActivity.this, view);
             }
         });
         mEndDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b) openDateDialog(view);
+                if(b) DegreeUtils.openDateDialog(AddTermActivity.this, view);
             }
         });
 
@@ -130,17 +130,6 @@ public class AddTermActivity extends AppCompatActivity {
             mStartDate.setText(startDateStr);
             mEndDate.setText(endDateStr);
         }
-    }
-
-    private void openDateDialog(final View editText){
-        final EditText editText1 = (EditText)editText;
-        final Calendar calendarToday = Calendar.getInstance();
-        new DatePickerDialog(AddTermActivity.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                editText1.setText(day + "/" + (month + 1) + "/" + year);
-            }
-        }, calendarToday.get(Calendar.YEAR), calendarToday.get(Calendar.MONTH),calendarToday.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

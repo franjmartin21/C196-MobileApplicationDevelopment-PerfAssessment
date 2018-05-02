@@ -113,6 +113,18 @@ public class DegreeService {
                 null);
     }
 
+    public Cursor getAssessmentById(int assessmentId){
+        SQLiteDatabase mDB = dbHelper.getReadableDatabase();
+
+        return mDB.query(DegreeTrackerContract.AssessmentEntry.TABLE_NAME,
+                null,
+                DegreeTrackerContract.AssessmentEntry._ID + "=?",
+                (new String[]{String.valueOf(assessmentId)}),
+                null,
+                null,
+                null);
+    }
+
     public Cursor getNotesByCourseId(int courseId){
         SQLiteDatabase mDB = dbHelper.getReadableDatabase();
 
@@ -204,7 +216,7 @@ public class DegreeService {
         contentValues.put(DegreeTrackerContract.AssessmentEntry.COLUMN_TYPE, type);
         contentValues.put(DegreeTrackerContract.AssessmentEntry.COLUMN_COURSE_ID, courseId );
 
-        return mDB.update(DegreeTrackerContract.TermEntry.TABLE_NAME, contentValues, DegreeTrackerContract.AssessmentEntry._ID + "=?",new String[]{String.valueOf(assessmentId)} );
+        return mDB.update(DegreeTrackerContract.AssessmentEntry.TABLE_NAME, contentValues, DegreeTrackerContract.AssessmentEntry._ID + "=?",new String[]{String.valueOf(assessmentId)} );
     }
 
     public int deleteAssessment(int courseId){

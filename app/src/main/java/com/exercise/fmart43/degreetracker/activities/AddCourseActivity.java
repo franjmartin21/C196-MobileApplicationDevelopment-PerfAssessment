@@ -73,7 +73,7 @@ public class AddCourseActivity extends AppCompatActivity {
 
     private int courseIdSelected;
 
-    DegreeService degreeService;
+    private DegreeService degreeService;
 
     private Map<String, Integer> termMap;
 

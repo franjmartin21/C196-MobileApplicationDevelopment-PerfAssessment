@@ -30,20 +30,22 @@
         android:id="@+id/tv_coursedetail_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_coursedetail_mentor"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView6"
+        app:layout_constraintEnd_toStartOf="@+id/appCompatImageView6"
+        app:layout_constraintTop_toTopOf="@+id/appCompatImageView6"
         tools:text="STATUS" />
 
     <TextView
         android:id="@+id/tv_coursedetail_daterange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView3"
-        app:layout_constraintEnd_toEndOf="@+id/tv_coursedetail_status"
-        app:layout_constraintTop_toTopOf="@+id/tv_coursedetail_phone"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+        app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2"
+        app:layout_constraintTop_toTopOf="@+id/appCompatImageView2"
         tools:text="2017-01-32 - 2018-09-09" />
 
     <android.support.v7.widget.AppCompatImageView
@@ -59,11 +61,33 @@
         android:id="@+id/appCompatImageView2"
         android:layout_width="16dp"
         android:layout_height="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_coursedetail_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_coursedetail_phone"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/ic_today_24dp" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView6"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_coursedetail_mentor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_coursedetail_mentor"
+        app:srcCompat="@drawable/ic_trending_up_24dp" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView5"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="@+id/appCompatImageView3"
         app:layout_constraintTop_toBottomOf="@+id/appCompatImageView3"
-        app:srcCompat="@drawable/ic_email_black_24dp"
-        />
+        app:srcCompat="@drawable/ic_email_black_24dp" />
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/appCompatImageView3"
@@ -92,11 +116,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
-        app:layout_constraintStart_toEndOf="@+id/appCompatImageView2"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageView2"
-        tools:text="julius@juliany.com"
-        />
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView5"
+        app:layout_constraintStart_toEndOf="@+id/appCompatImageView5"
+        tools:text="julius@juliany.com" />
 
     <TextView
         android:id="@+id/tv_coursedetail_phone"
