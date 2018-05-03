@@ -2,13 +2,31 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="switch_preference_1"
-        android:title="Enable Notification Assessment" />
+        android:defaultValue="@bool/preference_enable_notification_course_default"
+        android:key="@string/preference_enable_notification_course_key"
+        android:title="@string/preference_enable_notification_course_label"
+        android:summaryOff="Disabled"
+        android:summaryOn="Enabled" />
+
     <ListPreference
-        android:defaultValue="1"
-        android:entries="@array/time_notification_assessment"
-        android:entryValues="@array/time_notification_assessment"
-        android:key="list_preference_1"
-        android:title="List preference" />
+        android:defaultValue="@string/preference_time_notification_course_value_default"
+        android:entries="@array/time_notification_course_label"
+        android:entryValues="@array/time_notification_course_values"
+        android:key="@string/preference_time_notification_course_key"
+        android:title="@string/preference_time_notification_course_label" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="@bool/preference_enable_notification_assessment_default"
+        android:key="@string/preference_enable_notification_assessment_key"
+        android:title="@string/preference_enable_notification_assessment_label"
+        android:summaryOff="Disabled"
+        android:summaryOn="Enabled" />
+
+    <ListPreference
+        android:defaultValue="@string/preference_time_notification_assessment_value_default"
+        android:entries="@array/time_notification_assessment_label"
+        android:entryValues="@array/time_notification_assessment_values"
+        android:key="@string/preference_time_notification_assessment_key"
+        android:title="@string/preference_time_notification_assessment_label" />
+
 </PreferenceScreen>

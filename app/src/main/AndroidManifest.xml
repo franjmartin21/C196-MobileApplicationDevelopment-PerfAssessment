@@ -36,8 +36,7 @@
             android:label="@string/title_activity_add_course" />
         <activity
             android:name=".activities.DetailCourseActivity"
-            android:label="@string/title_activity_detail_course">
-        </activity>
+            android:label="@string/title_activity_detail_course"></activity>
         <activity
             android:name=".activities.SettingsActivity"
             android:label="@string/action_settings"
@@ -46,16 +45,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity   android:name=".activities.DetailAssessmentActivity"
-                    android:label="@string/title_assessment"
-                    android:parentActivityName=".activities.DetailCourseActivity">
+        <activity
+            android:name=".activities.DetailAssessmentActivity"
+            android:label="@string/title_assessment"
+            android:parentActivityName=".activities.DetailCourseActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.DetailCourseActivity" />
         </activity>
-
-        <activity android:name=".activities.DetailNoteActivity"
+        <activity
+            android:name=".activities.DetailNoteActivity"
             android:label="@string/title_note" />
+        <activity android:name=".activities.PreferencesShowActivity"></activity>
     </application>
 
 </manifest>

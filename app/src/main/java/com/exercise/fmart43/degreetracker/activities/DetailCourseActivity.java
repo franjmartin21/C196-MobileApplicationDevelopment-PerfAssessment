@@ -190,6 +190,7 @@ public class DetailCourseActivity extends AppCompatActivity implements Assessmen
     public void onNoteItemClick(int noteId) {
         Intent intent = new Intent(this, DetailNoteActivity.class);
         intent.putExtra(DetailNoteActivity.IntentExtra.COURSE_ID.name(), courseIdSelected);
+        intent.putExtra(DetailNoteActivity.IntentExtra.COURSE_NAME.name(), mTitle.getText().toString());
         intent.putExtra(DetailNoteActivity.IntentExtra.NOTE_ID.name(), noteId);
         startActivityForResult(intent, RequestCode.NOTE_ACTIVITY.code);
     }

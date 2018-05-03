@@ -1,10 +1,17 @@
 package com.exercise.fmart43.degreetracker.activities;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ShareCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -26,10 +33,13 @@ public class DetailNoteActivity extends AppCompatActivity {
 
     public enum IntentExtra {
         COURSE_ID,
+        COURSE_NAME,
         NOTE_ID
     }
 
-    private LinearLayout mlayout;
+    private static final String TITLE_NOTE = "Sharing the note of course ";
+
+    private CoordinatorLayout mLayout;
 
     private TextView mDateTimeNote;
 
@@ -39,7 +49,11 @@ public class DetailNoteActivity extends AppCompatActivity {
 
     private Button mSave;
 
+    private FloatingActionButton floatingActionButton;
+
     private int courseId;
+
+    private String courseName;
 
     private int noteId;
 
@@ -50,13 +64,38 @@ public class DetailNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.degreeService = new DegreeService(this);
 
-
-        mlayout = new LinearLayout(this);
+        mLayout = new CoordinatorLayout(this);
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         LinearLayout layoutButtons = new LinearLayout(this);
         layoutButtons.setOrientation(LinearLayout.HORIZONTAL);
-        mlayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+
         mDateTimeNote = new TextView(this);
         mTextNote = new EditText(this);
+
+        CoordinatorLayout.LayoutParams floatingActionButtonParams = new CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        floatingActionButtonParams.gravity = Gravity.RIGHT|Gravity.BOTTOM;
+        Resources r = this.getResources();
+        int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, r.getDisplayMetrics());
+        floatingActionButtonParams.setMargins(0, 0, margin, margin);
+        floatingActionButton = new FloatingActionButton(this);
+        floatingActionButton.setImageResource(R.drawable.ic_share_white_24dp);
+        floatingActionButton.setLayoutParams(floatingActionButtonParams);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String mimeType = "text/plain";
+                String title = TITLE_NOTE + courseName;
+                String text = TITLE_NOTE + courseName + "\n" + mTextNote.getText().toString();
+                ShareCompat.IntentBuilder.from(DetailNoteActivity.this)
+                        .setChooserTitle(title)
+                        .setType(mimeType)
+                        .setText(text)
+                        .startChooser();
+            }
+        });
+
         mCancel = new Button(this);
         mCancel.setText("Cancel");
         mCancel.setOnClickListener(new View.OnClickListener() {
@@ -74,20 +113,25 @@ public class DetailNoteActivity extends AppCompatActivity {
                 finish();
             }
         });
-        ViewGroup.LayoutParams paramsExample = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        mTextNote.setLayoutParams(paramsExample);
+        ViewGroup.LayoutParams paramsTextNote = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mTextNote.setLayoutParams(paramsTextNote);
         mTextNote.setLines(10);
         mDateTimeNote.setText("01/01/2018 08:90");
-        mlayout.addView(mDateTimeNote);
-        mlayout.addView(mTextNote);
+        linearLayout.addView(mDateTimeNote);
+        linearLayout.addView(mTextNote);
         layoutButtons.addView(mCancel);
         layoutButtons.addView(mSave);
-        mlayout.addView(layoutButtons);
-        setContentView(mlayout);
+        linearLayout.addView(layoutButtons);
+        mLayout.addView(linearLayout);
+        mLayout.addView(floatingActionButton);
+        setContentView(mLayout);
 
         Intent intent = getIntent();
         if(intent.hasExtra(IntentExtra.COURSE_ID.name())){
             courseId = intent.getIntExtra(IntentExtra.COURSE_ID.name(), 0);
+        }
+        if(intent.hasExtra(IntentExtra.COURSE_NAME.name())){
+            courseName = intent.getStringExtra(IntentExtra.COURSE_NAME.name());
         }
         if(intent.hasExtra(IntentExtra.NOTE_ID.name())){
             noteId = intent.getIntExtra(IntentExtra.NOTE_ID.name(), 0);
@@ -121,7 +165,7 @@ public class DetailNoteActivity extends AppCompatActivity {
                 degreeService.insertNote(mTextNote.getText().toString(), courseId);
             }
         } else {
-            Snackbar.make(mlayout, messageError, Snackbar.LENGTH_LONG).show();
+            Snackbar.make(mLayout, messageError, Snackbar.LENGTH_LONG).show();
         }
     }
 }

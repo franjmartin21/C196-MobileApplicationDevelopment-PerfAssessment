@@ -33,11 +33,44 @@
     <string name="notes_floating_title">Note</string>
     <string name="delete_term_message">Delete this Term?</string>
     <string name="title_activity_settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_assessment">Assessment</string>
     <string name="title_note">Note</string>
     <string name="addCourse_title_notinformed">The title is not informed</string>
+
+
+    <!-- For settings -->
+    <string name="preference_enable_notification_course_key" translatable="false">enable_notification_course</string>
+    <string name="preference_enable_notification_course_label">Enable Notifications Course</string>
+
+    <string name="preference_time_notification_course_key" translatable="false">time_notification_course</string>
+    <string name="preference_time_notification_course_label">Time Notification Course</string>
+
+    <string name="preference_time_notification_course_value_1hour" translatable="false">1_Hour</string>
+    <string name="preference_time_notification_course_value_1day" translatable="false">1_Day</string>
+    <string name="preference_time_notification_course_value_1week" translatable="false">1_Week</string>
+
+    <string name="preference_time_notification_course_label_1hour">1 Hour</string>
+    <string name="preference_time_notification_course_label_1day">1 Day</string>
+    <string name="preference_time_notification_course_label_1week">1 Week</string>
+
+    <string name="preference_time_notification_course_value_default" translatable="false">1_Day</string>
+
+    <string name="preference_enable_notification_assessment_key" translatable="false">enable_notification_assessment</string>
+    <string name="preference_enable_notification_assessment_label">Enable Notifications Assessment</string>
+
+    <string name="preference_time_notification_assessment_key" translatable="false">time_notification_assessment</string>
+    <string name="preference_time_notification_assessment_label">Time Notification Assessment</string>
+
+    <string name="preference_time_notification_assessment_value_1hour" translatable="false">1_Hour</string>
+    <string name="preference_time_notification_assessment_value_1day" translatable="false">1_Day</string>
+    <string name="preference_time_notification_assessment_value_1week" translatable="false">1_Week</string>
+
+    <string name="preference_time_notification_assessment_label_1hour">1 Hour</string>
+    <string name="preference_time_notification_assessment_label_1day">1 Day</string>
+    <string name="preference_time_notification_assessment_label_1week">1 Week</string>
+
+    <string name="preference_time_notification_assessment_value_default" translatable="false">1_Day</string>
+
+
 
 </resources>

@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.exercise.fmart43.degreetracker.activities.AddTermActivity;
 import com.exercise.fmart43.degreetracker.activities.DetailTermActivity;
 import com.exercise.fmart43.degreetracker.activities.ListCourseActivity;
+import com.exercise.fmart43.degreetracker.activities.PreferencesShowActivity;
 import com.exercise.fmart43.degreetracker.activities.SettingsActivity;
 import com.exercise.fmart43.degreetracker.adapters.TermAdapter;
 import com.exercise.fmart43.degreetracker.data.DegreeDBHelper;
@@ -121,6 +122,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(this, MainActivity.class);
         } else if (id == R.id.nav_courses) {
             intent = new Intent(this, ListCourseActivity.class);
+        } else if (id == R.id.nav_show_settings) {
+            intent = new Intent(this, PreferencesShowActivity.class);
         }
         startActivity(intent);
         return true;
