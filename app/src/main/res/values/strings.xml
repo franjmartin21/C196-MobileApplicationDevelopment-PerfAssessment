@@ -71,6 +71,8 @@
 
     <string name="preference_time_notification_assessment_value_default" translatable="false">1_Day</string>
 
+    <!-- For notifications -->
+    <string name="main_notification_channel_name" translatable="false">Course goal date coming</string>
 
 
 </resources>

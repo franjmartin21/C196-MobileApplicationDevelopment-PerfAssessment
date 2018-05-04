@@ -31,6 +31,7 @@ import com.exercise.fmart43.degreetracker.adapters.TermAdapter;
 import com.exercise.fmart43.degreetracker.data.DegreeDBHelper;
 import com.exercise.fmart43.degreetracker.data.DegreeService;
 import com.exercise.fmart43.degreetracker.data.DegreeTrackerContract;
+import com.exercise.fmart43.degreetracker.util.NotificationTriggerUtilities;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, TermAdapter.ListItemClickListener{
 
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        NotificationTriggerUtilities.degreeReminder(this);
     }
 
     @Override

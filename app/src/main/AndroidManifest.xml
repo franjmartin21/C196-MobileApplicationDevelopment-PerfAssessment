@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.exercise.fmart43.degreetracker">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -57,6 +59,16 @@
             android:name=".activities.DetailNoteActivity"
             android:label="@string/title_note" />
         <activity android:name=".activities.PreferencesShowActivity"></activity>
+
+        <service android:name=".services.DegreeReminderService"
+                android:exported="false" />
+        
+        <service android:name=".services.DegreeReminderFirebaseJobService"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

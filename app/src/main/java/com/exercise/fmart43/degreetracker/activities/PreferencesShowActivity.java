@@ -4,9 +4,12 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.exercise.fmart43.degreetracker.R;
+import com.exercise.fmart43.degreetracker.util.NotificationUtils;
 
 //todo: clase a eliminar
 public class PreferencesShowActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -72,5 +75,9 @@ public class PreferencesShowActivity extends AppCompatActivity implements Shared
                     getResources().getString(R.string.preference_time_notification_assessment_value_default))));
         }
 
+    }
+
+    public void handleClick(View view) {
+        NotificationUtils.remindUserCourseEndDateComing(this);
     }
 }
