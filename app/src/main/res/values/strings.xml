@@ -74,5 +74,12 @@
     <!-- For notifications -->
     <string name="main_notification_channel_name" translatable="false">Course goal date coming</string>
 
+    <string name="course_notification_title">Course goal date coming</string>
+    <string name="course_notification_text">The deadline for course %1$s is approaching</string>
+
+    <string name="assessment_notification_title">Assessment date coming</string>
+    <string name="assessment_notification_text">The deadline for assessment of course %1$s is approaching</string>
+
+    <string name="notification_previously_triggered" translatable="false">notification_previously_triggered</string>
 
 </resources>

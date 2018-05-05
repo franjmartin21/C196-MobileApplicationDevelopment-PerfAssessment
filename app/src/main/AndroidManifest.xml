@@ -60,15 +60,6 @@
             android:label="@string/title_note" />
         <activity android:name=".activities.PreferencesShowActivity"></activity>
 
-        <service android:name=".services.DegreeReminderService"
-                android:exported="false" />
-        
-        <service android:name=".services.DegreeReminderFirebaseJobService"
-                android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

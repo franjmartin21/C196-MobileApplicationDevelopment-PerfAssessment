@@ -77,7 +77,11 @@ public class PreferencesShowActivity extends AppCompatActivity implements Shared
 
     }
 
-    public void handleClick(View view) {
-        NotificationUtils.remindUserCourseEndDateComing(this);
+    public void handleClick1(View view) {
+        //NotificationUtils.sendNotificationAssessment(this, 1, 1);
+    }
+
+    public void handleClick2(View view) {
+        //NotificationUtils.sendNotificationCourse(this, 1);
     }
 }

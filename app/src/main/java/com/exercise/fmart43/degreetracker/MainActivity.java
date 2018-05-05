@@ -2,15 +2,16 @@ package com.exercise.fmart43.degreetracker;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,7 +21,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.exercise.fmart43.degreetracker.activities.AddTermActivity;
 import com.exercise.fmart43.degreetracker.activities.DetailTermActivity;
@@ -28,10 +28,8 @@ import com.exercise.fmart43.degreetracker.activities.ListCourseActivity;
 import com.exercise.fmart43.degreetracker.activities.PreferencesShowActivity;
 import com.exercise.fmart43.degreetracker.activities.SettingsActivity;
 import com.exercise.fmart43.degreetracker.adapters.TermAdapter;
-import com.exercise.fmart43.degreetracker.data.DegreeDBHelper;
 import com.exercise.fmart43.degreetracker.data.DegreeService;
-import com.exercise.fmart43.degreetracker.data.DegreeTrackerContract;
-import com.exercise.fmart43.degreetracker.util.NotificationTriggerUtilities;
+import com.exercise.fmart43.degreetracker.services.DegreeNotificationService;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, TermAdapter.ListItemClickListener{
 
@@ -41,9 +39,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DegreeService degreeService;
 
+    private DegreeNotificationService degreeNotificationService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         degreeService = new DegreeService(this);
+        degreeNotificationService = new DegreeNotificationService(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -76,14 +77,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        checkForNotifications(savedInstanceState);
+    }
 
-        NotificationTriggerUtilities.degreeReminder(this);
+    private void checkForNotifications(Bundle savedInstanceState) {
+        boolean previouslyStarted = savedInstanceState != null ? savedInstanceState.getBoolean(getString(R.string.notification_previously_triggered), Boolean.FALSE): Boolean.FALSE;
+        if(!previouslyStarted) {
+            degreeNotificationService.checkForNotifications();
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putBoolean(getString(R.string.notification_previously_triggered), Boolean.TRUE);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
