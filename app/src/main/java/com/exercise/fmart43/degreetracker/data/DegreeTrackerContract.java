@@ -157,6 +157,8 @@ public class DegreeTrackerContract {
 
         public static final String COLUMN_COURSE_ID = "course_Id";
 
+        public static final String LABEL_COURSE_TITLE = "course_title";
+
         public enum TypeAssessment{
             PREASSESSMENT("O"),
             OBJECTIVE("O"),

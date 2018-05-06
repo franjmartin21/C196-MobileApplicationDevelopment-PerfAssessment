@@ -49,12 +49,7 @@
         </activity>
         <activity
             android:name=".activities.DetailAssessmentActivity"
-            android:label="@string/title_assessment"
-            android:parentActivityName=".activities.DetailCourseActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.DetailCourseActivity" />
-        </activity>
+            android:label="@string/title_assessment" />
         <activity
             android:name=".activities.DetailNoteActivity"
             android:label="@string/title_note" />

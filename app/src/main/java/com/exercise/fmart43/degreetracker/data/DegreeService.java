@@ -101,6 +101,25 @@ public class DegreeService {
                 null);
     }
 
+    public Cursor getAssessmentList(){
+        SQLiteDatabase mDB = dbHelper.getReadableDatabase();
+
+        String rawQuery = "" +
+                "SELECT      a."+DegreeTrackerContract.AssessmentEntry._ID + "," +
+                "a."+DegreeTrackerContract.AssessmentEntry.COLUMN_TITLE+ ", " +
+                "a."+DegreeTrackerContract.AssessmentEntry.COLUMN_DATE+ ", " +
+                "c."+DegreeTrackerContract.CourseEntry.COLUMN_TITLE + " " + DegreeTrackerContract.AssessmentEntry.LABEL_COURSE_TITLE +
+                " FROM " + DegreeTrackerContract.AssessmentEntry.TABLE_NAME +" a" +
+                " INNER JOIN " + DegreeTrackerContract.CourseEntry.TABLE_NAME + " c" +
+                " ON a." + DegreeTrackerContract.AssessmentEntry.COLUMN_COURSE_ID + "=c." + DegreeTrackerContract.CourseEntry._ID +
+                " ORDER BY a." + DegreeTrackerContract.AssessmentEntry._ID;
+
+        return mDB.rawQuery(
+                rawQuery,
+                null
+        );
+    }
+
     public Cursor getAssessmentsByCourseId(int courseId){
         SQLiteDatabase mDB = dbHelper.getReadableDatabase();
 
@@ -116,13 +135,23 @@ public class DegreeService {
     public Cursor getAssessmentById(int assessmentId){
         SQLiteDatabase mDB = dbHelper.getReadableDatabase();
 
-        return mDB.query(DegreeTrackerContract.AssessmentEntry.TABLE_NAME,
-                null,
-                DegreeTrackerContract.AssessmentEntry._ID + "=?",
-                (new String[]{String.valueOf(assessmentId)}),
-                null,
-                null,
-                null);
+        String rawQuery = "" +
+                "SELECT      a."+DegreeTrackerContract.AssessmentEntry._ID + "," +
+                "a."+DegreeTrackerContract.AssessmentEntry.COLUMN_TITLE + ", " +
+                "a."+DegreeTrackerContract.AssessmentEntry.COLUMN_DATE + ", " +
+                "a."+DegreeTrackerContract.AssessmentEntry.COLUMN_TYPE +"," +
+                "a."+DegreeTrackerContract.AssessmentEntry.COLUMN_TIMESTAMP +"," +
+                "a."+DegreeTrackerContract.AssessmentEntry.COLUMN_COURSE_ID +"," +
+                "c."+DegreeTrackerContract.CourseEntry.COLUMN_TITLE + " " + DegreeTrackerContract.AssessmentEntry.LABEL_COURSE_TITLE +
+                " FROM " + DegreeTrackerContract.AssessmentEntry.TABLE_NAME +" a" +
+                " INNER JOIN " + DegreeTrackerContract.CourseEntry.TABLE_NAME + " c" +
+                " ON a." + DegreeTrackerContract.AssessmentEntry.COLUMN_COURSE_ID + "=c." + DegreeTrackerContract.CourseEntry._ID +
+                " WHERE a." + DegreeTrackerContract.AssessmentEntry._ID + "=?";
+
+        return mDB.rawQuery(
+                rawQuery,
+                new String[]{String.valueOf(assessmentId)}
+        );
     }
 
     public Cursor getNotesByCourseId(int courseId){

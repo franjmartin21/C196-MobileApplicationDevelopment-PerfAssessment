@@ -56,6 +56,13 @@ public class DegreeUtils {
         return c.getTime();
     }
 
+    public static Date addHours(Date date, int hours) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.HOUR, hours);
+        return c.getTime();
+    }
+
     public static void openDateDialog(Context context, final View editText){
         final EditText editText1 = (EditText)editText;
         final Calendar calendarToday = Calendar.getInstance();

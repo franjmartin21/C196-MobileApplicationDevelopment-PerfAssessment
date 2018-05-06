@@ -45,15 +45,15 @@
     <string name="preference_time_notification_course_key" translatable="false">time_notification_course</string>
     <string name="preference_time_notification_course_label">Time Notification Course</string>
 
-    <string name="preference_time_notification_course_value_1hour" translatable="false">1_Hour</string>
-    <string name="preference_time_notification_course_value_1day" translatable="false">1_Day</string>
-    <string name="preference_time_notification_course_value_1week" translatable="false">1_Week</string>
+    <string name="preference_time_notification_course_value_1hour" translatable="false">hour</string>
+    <string name="preference_time_notification_course_value_1day" translatable="false">day</string>
+    <string name="preference_time_notification_course_value_1week" translatable="false">week</string>
 
     <string name="preference_time_notification_course_label_1hour">1 Hour</string>
     <string name="preference_time_notification_course_label_1day">1 Day</string>
     <string name="preference_time_notification_course_label_1week">1 Week</string>
 
-    <string name="preference_time_notification_course_value_default" translatable="false">1_Day</string>
+    <string name="preference_time_notification_course_value_default" translatable="false">day</string>
 
     <string name="preference_enable_notification_assessment_key" translatable="false">enable_notification_assessment</string>
     <string name="preference_enable_notification_assessment_label">Enable Notifications Assessment</string>
@@ -61,15 +61,15 @@
     <string name="preference_time_notification_assessment_key" translatable="false">time_notification_assessment</string>
     <string name="preference_time_notification_assessment_label">Time Notification Assessment</string>
 
-    <string name="preference_time_notification_assessment_value_1hour" translatable="false">1_Hour</string>
-    <string name="preference_time_notification_assessment_value_1day" translatable="false">1_Day</string>
-    <string name="preference_time_notification_assessment_value_1week" translatable="false">1_Week</string>
+    <string name="preference_time_notification_assessment_value_1hour" translatable="false">hour</string>
+    <string name="preference_time_notification_assessment_value_1day" translatable="false">day</string>
+    <string name="preference_time_notification_assessment_value_1week" translatable="false">week</string>
 
     <string name="preference_time_notification_assessment_label_1hour">1 Hour</string>
     <string name="preference_time_notification_assessment_label_1day">1 Day</string>
     <string name="preference_time_notification_assessment_label_1week">1 Week</string>
 
-    <string name="preference_time_notification_assessment_value_default" translatable="false">1_Day</string>
+    <string name="preference_time_notification_assessment_value_default" translatable="false">day</string>
 
     <!-- For notifications -->
     <string name="main_notification_channel_name" translatable="false">Course goal date coming</string>
