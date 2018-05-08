@@ -3,68 +3,47 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:padding="10dp"
-    android:layout_margin="@dimen/recycler_item_margin"
-    android:background="@color/colorPrimaryDark"
+    style="@style/ActivityItemSmall"
     >
 
     <TextView
         android:id="@+id/tv_courselist_title"
-        style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
         android:layout_marginLeft="4dp"
         android:layout_marginStart="4dp"
-        android:fontFamily="monospace"
-        android:textSize="18sp"
         android:maxLength="50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Mobile Application Development" />
+        tools:text="Mobile Application Development"
+        style="@style/Title2ItemLabel" />
 
     <TextView
         android:id="@+id/tv_courselist_daterange"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="168dp"
-        android:layout_height="15dp"
-        android:layout_gravity="center_vertical|start"
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginStart="4dp"
-        android:fontFamily="monospace"
-        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="12/09/2018 - 12/12/2018" />
+        tools:text="12/09/2018 - 12/12/2018"
+        style="@style/TextItemLabel"/>
 
     <TextView
         android:id="@+id/tv_courselist_status"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|start"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:fontFamily="monospace"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="STATUS" />
+        tools:text="STATUS"
+        style="@style/TextItemLabel" />
 
     <TextView
         android:id="@+id/tv_courselist_term"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|start"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:fontFamily="monospace"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="STATUS" />
+        tools:text="STATUS"
+        style="@style/TextItemLabel" />
 </android.support.constraint.ConstraintLayout>

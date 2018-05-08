@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.exercise.fmart43.degreetracker.R;
 import com.exercise.fmart43.degreetracker.util.NotificationUtils;
 
-//todo: clase a eliminar
 public class PreferencesShowActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private TextView mPref1;

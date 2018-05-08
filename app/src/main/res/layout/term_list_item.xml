@@ -3,54 +3,39 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:padding="10dp"
-    android:layout_margin="@dimen/recycler_item_margin"
-    android:background="@color/colorPrimaryDark"
+    style="@style/ActivityItemMain"
     >
 
     <TextView
         android:id="@+id/tv_termlist_title"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|start"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="4dp"
         android:layout_marginStart="4dp"
-        android:fontFamily="monospace"
-        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Term 1" />
+        tools:text="Term 1"
+        style="@style/TitleItemLabel"/>
 
     <TextView
         android:id="@+id/tv_termlist_daterange"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:fontFamily="monospace"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="12/09/2018 - 12/12/2018" />
+        tools:text="12/09/2018 - 12/12/2018"
+        style="@style/TextItemLabel"/>
 
     <TextView
         android:id="@+id/tv_termlist_status"
-        style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
-        android:layout_height="21dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
-        android:fontFamily="monospace"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_termlist_daterange"
         app:layout_constraintEnd_toEndOf="@+id/iv_termList_delete"
-        tools:text="STATUS" />
+        tools:text="STATUS"
+        style="@style/TextItemLabel"/>
 
     <ImageView
         android:id="@+id/iv_termList_delete"
@@ -72,6 +57,6 @@
         app:layout_constraintBottom_toTopOf="@+id/tv_termlist_status"
         app:layout_constraintEnd_toEndOf="@+id/iv_termList_delete"
         app:layout_constraintTop_toBottomOf="@+id/iv_termList_delete"
-        app:srcCompat="@drawable/ic_edit_white_24dp" />
+        app:srcCompat="@drawable/ic_edit_primary_24dp" />
 
 </android.support.constraint.ConstraintLayout>

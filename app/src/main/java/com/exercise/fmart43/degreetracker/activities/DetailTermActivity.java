@@ -1,11 +1,14 @@
 package com.exercise.fmart43.degreetracker.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,6 +38,8 @@ public class DetailTermActivity extends AppCompatActivity implements CourseAdapt
 
     private SQLiteDatabase mDB;
 
+    private View mLayout;
+
     private TextView mTitle;
 
     private TextView mDateRange;
@@ -55,6 +60,7 @@ public class DetailTermActivity extends AppCompatActivity implements CourseAdapt
         degreeService = new DegreeService(this);
         setContentView(R.layout.activity_detail_term);
 
+        mLayout = findViewById(R.id.detailTermLayout);
         mTitle = findViewById(R.id.tv_detailterm_title);
         mDateRange = findViewById(R.id.tv_detailterm_daterange);
         mStatus = findViewById(R.id.tv_detailterm_status);
@@ -107,9 +113,23 @@ public class DetailTermActivity extends AppCompatActivity implements CourseAdapt
             intent.putExtra(AddTermActivity.IntentExtra.MODE_EDITION.name(), true);
             intent.putExtra(IntentExtra.TERM_ID.name(), termId);
             startActivity(intent);
+        } else if(id == R.id.action_delete){
+            deleteTerm();
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    private void deleteTerm(){
+        if(mCourseAdapter.getItemCount() > 0){
+            Snackbar.make(mLayout, "The Term has courses assigned and cannot be deleted", Snackbar.LENGTH_LONG).show();
+        }
+        else {
+            DialogDeleteClickListener dialogClickListener = new DialogDeleteClickListener();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.delete_term_message)
+                    .setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+        }
     }
 
     @Override
@@ -118,5 +138,27 @@ public class DetailTermActivity extends AppCompatActivity implements CourseAdapt
         intent.putExtra(DetailCourseActivity.IntentExtra.COURSE_ID.name(), courseId);
         startActivity(intent);
     }
+
+    private void returnToListTermActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    class DialogDeleteClickListener implements DialogInterface.OnClickListener{
+
+        private boolean courseDeleted;
+        @Override
+        public void onClick(DialogInterface dialogInterface, int choice) {
+            if(choice == DialogInterface.BUTTON_POSITIVE){
+                degreeService.deleteTerm(termId);
+                returnToListTermActivity();
+            }
+        }
+
+        public boolean isCourseDeleted() {
+            return courseDeleted;
+        }
+    }
+
 
 }

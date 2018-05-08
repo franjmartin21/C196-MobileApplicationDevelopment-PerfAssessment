@@ -177,7 +177,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:ems="10"
-                android:maxLength="15"
+                android:maxLength="12"
                 android:inputType="phone"
                 app:layout_constraintBottom_toBottomOf="@+id/message6"
                 app:layout_constraintEnd_toEndOf="parent"

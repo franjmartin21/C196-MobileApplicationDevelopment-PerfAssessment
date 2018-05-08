@@ -44,6 +44,9 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
 
         holder.mAssessmentId = mCursor.getInt(mCursor.getColumnIndex(DegreeTrackerContract.AssessmentEntry._ID));
         holder.mAssessmentTitle.setText(mCursor.getString(mCursor.getColumnIndex(DegreeTrackerContract.AssessmentEntry.COLUMN_TITLE)));
+        String assessmentDateStr = mCursor.getString(mCursor.getColumnIndex(DegreeTrackerContract.AssessmentEntry.COLUMN_DATE));
+        Date assessmentDate = DegreeTrackerContract.getDateFromDBStrValue(assessmentDateStr);
+        holder.mAssessmentDate.setText(DegreeUtils.getStringFromDate(assessmentDate));
         DegreeTrackerContract.AssessmentEntry.TypeAssessment typeAssessment = DegreeTrackerContract.AssessmentEntry.TypeAssessment.valueOf(mCursor.getString(mCursor.getColumnIndex(DegreeTrackerContract.AssessmentEntry.COLUMN_TYPE)));
         holder.mAssessmentType.setText(typeAssessment.getPrefix());
     }
@@ -63,12 +66,15 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
 
         private TextView mAssessmentTitle;
 
+        private TextView mAssessmentDate;
+
         private TextView mAssessmentType;
 
         public AssessmentAdapterViewHolder(View itemView) {
             super(itemView);
             mAssessmentTitle = itemView.findViewById(R.id.tv_assessmentlist_title);
             mAssessmentType = itemView.findViewById(R.id.tv_assessmentlist_type);
+            mAssessmentDate = itemView.findViewById(R.id.tv_assessmentlist_date);
             itemView.setOnClickListener(this);
         }
 

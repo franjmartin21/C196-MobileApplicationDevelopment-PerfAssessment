@@ -48,7 +48,6 @@ public class AddTermActivity extends AppCompatActivity {
         }
     }
 
-    //TODO: this setting should go to a config file
     private static final int MIN_MONTHS_LENGHT_TERM = 3;
     private static final int MAX_MONTHS_LENGHT_TERM = 9;
 

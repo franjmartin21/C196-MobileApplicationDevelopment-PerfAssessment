@@ -1,5 +1,6 @@
 package com.exercise.fmart43.degreetracker.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -8,10 +9,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -41,8 +45,6 @@ public class DetailNoteActivity extends AppCompatActivity {
 
     private CoordinatorLayout mLayout;
 
-    private TextView mDateTimeNote;
-
     private EditText mTextNote;
 
     private Button mCancel;
@@ -71,9 +73,7 @@ public class DetailNoteActivity extends AppCompatActivity {
         layoutButtons.setOrientation(LinearLayout.HORIZONTAL);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-        mDateTimeNote = new TextView(this);
         mTextNote = new EditText(this);
-
         CoordinatorLayout.LayoutParams floatingActionButtonParams = new CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         floatingActionButtonParams.gravity = Gravity.RIGHT|Gravity.BOTTOM;
         Resources r = this.getResources();
@@ -97,7 +97,7 @@ public class DetailNoteActivity extends AppCompatActivity {
         });
 
         mCancel = new Button(this);
-        mCancel.setText("Cancel");
+        mCancel.setText("Back");
         mCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,8 +116,6 @@ public class DetailNoteActivity extends AppCompatActivity {
         ViewGroup.LayoutParams paramsTextNote = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mTextNote.setLayoutParams(paramsTextNote);
         mTextNote.setLines(10);
-        mDateTimeNote.setText("01/01/2018 08:90");
-        linearLayout.addView(mDateTimeNote);
         linearLayout.addView(mTextNote);
         layoutButtons.addView(mCancel);
         layoutButtons.addView(mSave);
@@ -143,7 +141,6 @@ public class DetailNoteActivity extends AppCompatActivity {
         Cursor cursor = degreeService.getNoteById(noteId);
         if(cursor.moveToFirst()) {
             Date date = DegreeTrackerContract.getDateTimeFromDBStrValue(cursor.getString(cursor.getColumnIndex(DegreeTrackerContract.NoteEntry.COLUMN_TIMESTAMP)));
-            mDateTimeNote.setText(DegreeUtils.getStringFromDateTime(date));
             mTextNote.setText(cursor.getString(cursor.getColumnIndex(DegreeTrackerContract.NoteEntry.COLUMN_TEXT)));
         }
     }
@@ -168,4 +165,30 @@ public class DetailNoteActivity extends AppCompatActivity {
             Snackbar.make(mLayout, messageError, Snackbar.LENGTH_LONG).show();
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(noteId > 0)
+            getMenuInflater().inflate(R.menu.delete_top, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int choice) {
+                if(choice == DialogInterface.BUTTON_POSITIVE) {
+                    degreeService.deleteNote(noteId);
+                    finish();
+                }
+            }
+        };
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.delete_note_message)
+                .setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+        return super.onOptionsItemSelected(item);
+    }
+
 }

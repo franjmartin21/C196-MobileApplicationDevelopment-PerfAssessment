@@ -1,11 +1,14 @@
 package com.exercise.fmart43.degreetracker.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +24,7 @@ import com.exercise.fmart43.degreetracker.R;
 import com.exercise.fmart43.degreetracker.adapters.AssessmentAdapter;
 import com.exercise.fmart43.degreetracker.adapters.CourseAdapter;
 import com.exercise.fmart43.degreetracker.adapters.NoteAdapter;
+import com.exercise.fmart43.degreetracker.adapters.TermAdapter;
 import com.exercise.fmart43.degreetracker.data.DegreeService;
 import com.exercise.fmart43.degreetracker.data.DegreeTrackerContract;
 import com.exercise.fmart43.degreetracker.util.DegreeUtils;
@@ -51,6 +55,8 @@ public class DetailCourseActivity extends AppCompatActivity implements Assessmen
 
     private DegreeService degreeService;
 
+    private View mLayout;
+
     private TextView mTitle;
     private TextView mStatus;
     private TextView mDateRange;
@@ -72,6 +78,7 @@ public class DetailCourseActivity extends AppCompatActivity implements Assessmen
         degreeService = new DegreeService(this);
 
         setContentView(R.layout.activity_detail_course);
+        mLayout = findViewById(R.id.layout_detail_course);
         mTitle = findViewById(R.id.tv_coursedetail_title);
         mStatus = findViewById(R.id.tv_coursedetail_status);
         mDateRange = findViewById(R.id.tv_coursedetail_daterange);
@@ -80,7 +87,12 @@ public class DetailCourseActivity extends AppCompatActivity implements Assessmen
         mEmail = findViewById(R.id.tv_coursedetail_email);
 
         mAssessmentList = findViewById(R.id.rv_assessment);
+        DividerItemDecoration dividerItemDecorationAssessment = new DividerItemDecoration(mAssessmentList.getContext(),DividerItemDecoration.VERTICAL);
+        mAssessmentList.addItemDecoration(dividerItemDecorationAssessment);
+
         mNoteList = findViewById(R.id.rv_notes);
+        DividerItemDecoration dividerItemDecorationNote = new DividerItemDecoration(mNoteList.getContext(),DividerItemDecoration.VERTICAL);
+        mNoteList.addItemDecoration(dividerItemDecorationNote);
 
         Intent intent = getIntent();
 
@@ -174,8 +186,44 @@ public class DetailCourseActivity extends AppCompatActivity implements Assessmen
             intent.putExtra(AddCourseActivity.IntentExtra.MODE_EDITION.name(), true);
             intent.putExtra(AddCourseActivity.IntentExtra.COURSE_ID.name(), courseIdSelected);
             startActivity(intent);
+        } else if(id == R.id.action_delete){
+            deleteCourse();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void deleteCourse(){
+        if(mAssessmentAdapter.getItemCount() > 0 || mNoteAdapter.getItemCount() > 0){
+            Snackbar.make(mLayout, "The Term has courses assigned and cannot be deleted", Snackbar.LENGTH_LONG).show();
+        }
+        else {
+            DialogDeleteClickListener dialogClickListener = new DialogDeleteClickListener();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.delete_term_message)
+                    .setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+        }
+    }
+
+    private void returnToListCourseActivity(){
+        Intent intent = new Intent(this, ListCourseActivity.class);
+        startActivity(intent);
+    }
+
+    class DialogDeleteClickListener implements DialogInterface.OnClickListener{
+
+        private boolean courseDeleted;
+        @Override
+        public void onClick(DialogInterface dialogInterface, int choice) {
+            if(choice == DialogInterface.BUTTON_POSITIVE){
+                degreeService.deleteCourse(courseIdSelected);
+                returnToListCourseActivity();
+            }
+        }
+
+        public boolean isCourseDeleted() {
+            return courseDeleted;
+        }
     }
 
     @Override

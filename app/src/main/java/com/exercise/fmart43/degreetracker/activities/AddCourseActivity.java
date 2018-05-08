@@ -192,13 +192,11 @@ public class AddCourseActivity extends AppCompatActivity {
             mStartDate.setText(DegreeUtils.getStringFromDate(startDate));
             Date endDate = DegreeTrackerContract.getDateFromDBStrValue(cursor.getString(cursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_END_DATE)));
             mEndDate.setText(DegreeUtils.getStringFromDate(endDate));
-            //todo: set correctly the spinner for status
             int statusSpinnerPosition = adapterStatus.getPosition(cursor.getString(cursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_STATUS)));
             mStatus.setSelection(statusSpinnerPosition);
             mMentor.setText(cursor.getString(cursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_MENTOR_NAME)));
             mPhonenumber.setText(cursor.getString(cursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_PHONE_NUMBER)));
             mEmail.setText(cursor.getString(cursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_EMAIL_ADDRESS)));
-            //todo: set correctly the spinner for term
             int termId = cursor.getInt(cursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_TERM_ID));
             String termTitle = null;
             for(String key: termMap.keySet()){

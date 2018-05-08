@@ -8,7 +8,9 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DegreeTrackerContract {
 
@@ -121,13 +123,12 @@ public class DegreeTrackerContract {
             DROPPED,
             FINISHED;
 
-            static public String[] getStatusArray(){
-                String[] array = new String[StatusCourse.values().length];
-                int i = 0;
+            static public List<String> getStatusArray(){
+                List<String> statusList = new ArrayList<>();
                 for(StatusCourse statusCourse: StatusCourse.values()){
-                    array[i++] = statusCourse.name();
+                    statusList.add(statusCourse.name());
                 }
-                return array;
+                return statusList;
             }
         }
     }

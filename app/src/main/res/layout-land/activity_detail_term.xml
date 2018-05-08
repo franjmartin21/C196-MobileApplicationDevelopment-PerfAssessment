@@ -5,51 +5,48 @@
     android:id="@+id/detailTermLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context="com.exercise.fmart43.degreetracker.activities.DetailTermActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="115dp"
-        tools:showIn="@layout/activity_main"
-        style="@style/DetailScreen">
+        style="@style/DetailScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:showIn="@layout/activity_main">
+
         <TextView
             android:id="@+id/tv_detailterm_title"
+            style="@style/DetailTitleLabel"
             android:layout_marginLeft="12dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Term 1"
-            style="@style/DetailTitleLabel"/>
+            tools:text="Term 1" />
 
         <TextView
             android:id="@+id/tv_detailterm_daterange"
+            style="@style/TextDetailLabel"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tv_detailterm_status"
-            tools:text="datefrom - dateto"
-            style="@style/TextDetailLabel"/>
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_detailterm_status"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detailterm_status"
+            tools:text="datefrom - dateto" />
 
         <TextView
             android:id="@+id/tv_detailterm_status"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="8dp"
+            style="@style/TextDetailLabel"
+            android:layout_marginTop="24dp"
             android:text="STATUS"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_detailterm_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_detailterm_title"
-            style="@style/TextDetailLabel"/>
+            app:layout_constraintStart_toStartOf="@+id/tv_detailterm_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detailterm_title" />
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_courses"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

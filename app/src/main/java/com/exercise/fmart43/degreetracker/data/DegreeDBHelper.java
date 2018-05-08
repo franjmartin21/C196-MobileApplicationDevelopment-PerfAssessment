@@ -104,7 +104,7 @@ public class DegreeDBHelper extends SQLiteOpenHelper {
                 DegreeTrackerContract.AssessmentEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DegreeTrackerContract.AssessmentEntry.COLUMN_TITLE + " TEXT NOT NULL, " +
                 DegreeTrackerContract.AssessmentEntry.COLUMN_TYPE + " TEXT NOT NULL, " +
-                DegreeTrackerContract.AssessmentEntry.COLUMN_DATE + " DATE NOT NULL, " +
+                DegreeTrackerContract.AssessmentEntry.COLUMN_DATE + " DATE, " +
                 DegreeTrackerContract.AssessmentEntry.COLUMN_TIMESTAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
                 DegreeTrackerContract.AssessmentEntry.COLUMN_COURSE_ID + " INTEGER" +
                 ");";

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 
@@ -23,10 +24,16 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         PreferenceScreen prefScreen = getPreferenceScreen();
         int count = prefScreen.getPreferenceCount();
         for (int i = 0; i < count; i++) {
-            Preference p = prefScreen.getPreference(i);
+            setSummaryPropertiesCategory(((PreferenceCategory)prefScreen.getPreference(i)), sharedPreferences);
+        }
+    }
+
+    private void setSummaryPropertiesCategory(PreferenceCategory pc, SharedPreferences sharedPreferences){
+        int count = pc.getPreferenceCount();
+        for (int i = 0; i < count; i++) {
+            Preference p = pc.getPreference(i);
             setPreferenceSummary(p, sharedPreferences);
         }
-
     }
 
     private void setPreferenceSummary(Preference preference, SharedPreferences sharedPreferences){
@@ -51,6 +58,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+
     }
 
     @Override

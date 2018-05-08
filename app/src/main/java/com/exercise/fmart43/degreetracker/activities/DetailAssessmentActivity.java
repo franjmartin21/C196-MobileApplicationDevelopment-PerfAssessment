@@ -1,12 +1,15 @@
 package com.exercise.fmart43.degreetracker.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import com.exercise.fmart43.degreetracker.MainActivity;
 import com.exercise.fmart43.degreetracker.R;
+import com.exercise.fmart43.degreetracker.adapters.TermAdapter;
 import com.exercise.fmart43.degreetracker.data.DegreeService;
 import com.exercise.fmart43.degreetracker.data.DegreeTrackerContract;
 import com.exercise.fmart43.degreetracker.util.DegreeUtils;
@@ -140,6 +144,31 @@ public class DetailAssessmentActivity extends AppCompatActivity {
         } else {
             Snackbar.make(mLayout, messageError, Snackbar.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(assessmentId > 0)
+            getMenuInflater().inflate(R.menu.delete_top, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int choice) {
+                if(choice == DialogInterface.BUTTON_POSITIVE) {
+                    degreeService.deleteAssessment(assessmentId);
+                    finish();
+                }
+            }
+        };
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.delete_assessment_message)
+                .setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+        return super.onOptionsItemSelected(item);
     }
 
 }

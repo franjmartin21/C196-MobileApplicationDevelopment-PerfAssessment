@@ -287,6 +287,6 @@ public class DegreeService {
 
     public int deleteNote(int noteId){
         SQLiteDatabase mDB = dbHelper.getWritableDatabase();
-        return mDB.delete(DegreeTrackerContract.AssessmentEntry.TABLE_NAME, DegreeTrackerContract.NoteEntry._ID + "=?",new String[]{String.valueOf(noteId)});
+        return mDB.delete(DegreeTrackerContract.NoteEntry.TABLE_NAME, DegreeTrackerContract.NoteEntry._ID + "=?",new String[]{String.valueOf(noteId)});
     }
 }

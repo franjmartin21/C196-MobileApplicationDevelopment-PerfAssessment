@@ -17,7 +17,6 @@
         android:layout_gravity="center_vertical|start"
         android:layout_marginLeft="4dp"
         android:layout_marginStart="4dp"
-        android:fontFamily="monospace"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

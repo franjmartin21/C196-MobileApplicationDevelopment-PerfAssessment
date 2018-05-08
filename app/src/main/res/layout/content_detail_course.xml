@@ -6,19 +6,17 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.exercise.fmart43.degreetracker.activities.DetailCourseActivity"
-    tools:showIn="@layout/activity_detail_course">
+    tools:showIn="@layout/activity_detail_course"
+    style="@style/DetailScreen">
 
     <TextView
         android:id="@+id/tv_coursedetail_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/DetailTitleLabel"
         android:layout_marginEnd="24dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
-        android:textSize="20sp"
         android:singleLine="false"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -28,34 +26,33 @@
 
     <TextView
         android:id="@+id/tv_coursedetail_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView6"
         app:layout_constraintEnd_toStartOf="@+id/appCompatImageView6"
         app:layout_constraintTop_toTopOf="@+id/appCompatImageView6"
-        tools:text="STATUS" />
+        tools:text="STATUS"
+        style="@style/TextDetailLabel"/>
 
     <TextView
         android:id="@+id/tv_coursedetail_daterange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
         app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2"
         app:layout_constraintTop_toTopOf="@+id/appCompatImageView2"
-        tools:text="2017-01-32 - 2018-09-09" />
+        tools:text="2017-01-32 - 2018-09-09"
+        style="@style/TextDetailLabel"/>
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/appCompatImageView"
         android:layout_width="16dp"
         android:layout_height="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/tv_coursedetail_title"
+        app:layout_constraintEnd_toStartOf="@+id/tv_coursedetail_mentor"
         app:layout_constraintTop_toBottomOf="@+id/tv_coursedetail_title"
-        app:srcCompat="@drawable/ic_person_black_24dp" />
+        app:srcCompat="@drawable/ic_person" />
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/appCompatImageView2"
@@ -101,35 +98,29 @@
 
     <TextView
         android:id="@+id/tv_coursedetail_mentor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
+        style="@style/TextDetailLabel"
         app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
-        app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+        app:layout_constraintStart_toStartOf="@+id/tv_coursedetail_title"
         app:layout_constraintTop_toTopOf="@+id/appCompatImageView"
         tools:text="Julius Juliany" />
 
     <TextView
         android:id="@+id/tv_coursedetail_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView5"
         app:layout_constraintStart_toEndOf="@+id/appCompatImageView5"
-        tools:text="julius@juliany.com" />
+        tools:text="julius@juliany.com"
+        style="@style/TextDetailLabel" />
 
     <TextView
         android:id="@+id/tv_coursedetail_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView3"
         app:layout_constraintStart_toEndOf="@+id/appCompatImageView3"
         app:layout_constraintTop_toTopOf="@+id/appCompatImageView3"
         tools:text="76598332"
-        />
+        style="@style/TextDetailLabel" />
 
 </android.support.constraint.ConstraintLayout>

@@ -54,7 +54,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseAdap
         holder.mCourseTitle.setText(mCursor.getString(mCursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_TITLE)));
         Date startDate = DegreeTrackerContract.getDateFromDBStrValue(mCursor.getString(mCursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_START_DATE)));
         Date endDate = DegreeTrackerContract.getDateFromDBStrValue(mCursor.getString(mCursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_END_DATE)));
-        holder.mCourseDateRange.setText(DegreeUtils.getStringFromDate(startDate) + "-" + DegreeUtils.getStringFromDate(endDate));
+        holder.mCourseDateRange.setText(DegreeUtils.getStringFromDate(startDate) + " - " + DegreeUtils.getStringFromDate(endDate));
         if(mType == TypeEnum.COURSE_TERM) {
             holder.mCourseTerm.setVisibility(View.GONE);
             holder.mCourseStatus.setText(mCursor.getString(mCursor.getColumnIndex(DegreeTrackerContract.CourseEntry.COLUMN_STATUS)));
